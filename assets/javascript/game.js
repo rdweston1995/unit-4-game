@@ -1,6 +1,8 @@
 //Variables for player character and defenders
 var pc = "", def = "";
+var pcHealth = 0, defHealth = 0;
 
+//Character objects
 var kenobi = {
     name: "Obi-Wan Kenobi",
     color: "blue",
@@ -65,43 +67,31 @@ function fight(pc, def){
     console.log(pc);
     console.log(window[pc].hp);
     console.log(window[def].hp);
+
+    //When pressed lower both playerCharacter and Defenders health by appropriate amounts
+    //Add the characters attackPower to the current attack power i.e(6,12,18,24,30)
+    //Update the health shown on the page to show correct values ----- Probably put this in a new function to update the page
 }
 //function to lower the characters health
+
 //function for win conditions
+function win(){
+    //When the defender's health hits zero run this function to add one to wins
+    //Allow the user to pick a new defender
+
+    //Remove image and health of the previous defender
+}
 
 
 //Setting the image for the PCimage div
 //Setting the image for the DEFImage div
 function setPlayerImage(pc, def){ 
-    //$("#PCimage").attr("border-style", "solid");
-    //$("#PCimage").attr("border-width", "1px");
-    //console.log(obi.color);
-    if(pc === "kenobi"){
-        $("#PCimage").attr("src", kenobi.source);
-        $("#PCimage").css("border-color", kenobi.color);
-        
-    }else if(pc === "luke"){
-        $("#PCimage").attr("src", luke.source);
-        $("#PCimage").css("border-color", luke.color);
-    }else if(pc === "sheev"){
-        $("#PCimage").attr("src", sheev.source);
-        $("#PCimage").css("border-color", sheev.color);
-    }else if(pc === "maul"){
-        $("#PCimage").attr("src", maul.source);
-        $("#PCimage").css("border-color", maul.color);
-    }
+    $("#PCimage").attr("src", window[pc].source);
+    $("#PCimage").css("border-color", window[pc].color);
+    $("#PChealth").text(window[pc].hp);
 
-    if(def === "kenobi"){
-        $("#DEFImage").attr("src", kenobi.source);
-        $("#DEFImage").css("border-color", kenobi.color);
-    }else if(def === "luke"){
-        $("#DEFImage").attr("src", luke.source);
-        $("#DEFImage").css("border-color", luke.color);
-    }else if(def === "sheev"){
-        $("#DEFImage").attr("src", sheev.source);
-        $("#DEFImage").css("border-color", sheev.color);
-    }else if(def === "maul"){
-        $("#DEFImage").attr("src", maul.source);
-        $("#DEFImage").css("border-color", maul.color);
-    }
+    $("#DEFImage").attr("src", window[def].source);
+    $("#DEFImage").css("border-color", window[def].color);
+    $("#DEFhealth").text(window[def].hp);
+    
 }
