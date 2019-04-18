@@ -1,0 +1,32 @@
+#PCimage, img{
+    width: 150px;
+    height: 150px;
+}
+
+.character, .fight{
+    margin:20px;
+}
+
+#PCimage, #DEFImage{
+    border-style: solid;
+    border-width: 3px;
+    border-color: transparent;
+}
+
+body{
+    /*background-image: url("../images/Endor.jpg");*/
+    background-color: #cccccc;
+}
+
+.character{
+    margin-left:0px;
+    margin-right: 0px;
+    background-color: #ffffff;
+    border-style:solid;
+    border-color: green;
+    border-width: 3px;   
+}
+
+#kenobi{
+    margin-left: 50px;
+}
