@@ -1,8 +1,12 @@
 //Variables for player character and defenders
 var pc = "", def = "";
-var pcHealth = 0, defHealth = 0;
+//var pcHealth = 0, defHealth = 0;
 
 //Character objects
+var playerCharacter = {};
+
+var defender = {};
+
 var kenobi = {
     name: "Obi-Wan Kenobi",
     color: "blue",
@@ -45,14 +49,18 @@ $(".character").on("click", function(){
     if(pc === ""){
         //playerCharacter = $(".character").val();
         pc = $(this).attr("value");
+        $(this).hide();
+        setPlayerCharacter(pc);
         //console.log("Player Character: " + pc);
         
     }else if(def === ""){
         def = $(this).attr("value");
+        $(this).hide();
         //console.log("Defender: " + def);
+        setDefenderCharacter(def);
     }
-
-    setPlayerImage(pc, def);
+    
+    setPlayerImage();
 });
 
 $("#fight").on("click", function(){
@@ -62,15 +70,19 @@ $("#fight").on("click", function(){
 //function to go through what happens when the attack button is clicked
 //Use window[variableName] to use the passed string as the variable name
 function fight(pc, def){
-    console.log(kenobi.hp);
-
-    console.log(pc);
-    console.log(window[pc].hp);
-    console.log(window[def].hp);
-
     //When pressed lower both playerCharacter and Defenders health by appropriate amounts
-    //Add the characters attackPower to the current attack power i.e(6,12,18,24,30)
     //Update the health shown on the page to show correct values ----- Probably put this in a new function to update the page
+    playerCharacter.hp -= defender.counterAttack;
+    defender.hp -=playerCharacter.attack;
+    updateHP();
+    //Add the characters attackPower to the current attack power i.e(6,12,18,24,30)
+    playerCharacter.attack += window[pc].attack;
+    console.log(playerCharacter);
+
+    //if statements to check if either the playerCharacter or the defenders hp has gone below 0
+    if(defender.hp <= 0){
+        defenderLost();
+    }
 }
 //function to lower the characters health
 
@@ -82,16 +94,63 @@ function win(){
     //Remove image and health of the previous defender
 }
 
+function setPlayerCharacter(pc){
+    playerCharacter.name = window[pc].name;
+    playerCharacter.color = window[pc].color;
+    playerCharacter.hp = window[pc].hp;
+    playerCharacter.attack = window[pc].attack;
+    playerCharacter.source = window[pc].source;
+    
+    //console.log(playerCharacter);
+}
+
+function setDefenderCharacter(def){
+    defender.name = window[def].name;
+    defender.color = window[def].color;
+    defender.hp = window[def].hp;
+    defender.counterAttack = window[def].counterAttack;
+    defender.source = window[def].source;
+    
+    //console.log(defender);
+}
+
 
 //Setting the image for the PCimage div
 //Setting the image for the DEFImage div
-function setPlayerImage(pc, def){ 
-    $("#PCimage").attr("src", window[pc].source);
-    $("#PCimage").css("border-color", window[pc].color);
-    $("#PChealth").text(window[pc].hp);
+function setPlayerImage(){ 
+    $("#PCimage").attr("src", playerCharacter.source);
+    $("#PCimage").css("border-color", playerCharacter.color);
+    $("#PChealth").text(playerCharacter.hp);
 
-    $("#DEFImage").attr("src", window[def].source);
-    $("#DEFImage").css("border-color", window[def].color);
-    $("#DEFhealth").text(window[def].hp);
-    
+    $("#DEFImage").attr("src", defender.source);
+    $("#DEFImage").css("border-color", defender.color);
+    $("#DEFhealth").text(defender.hp);   
 }
+
+function updateHP(){
+    $("#PChealth").text(playerCharacter.hp);
+    $("#DEFhealth").text(defender.hp);
+}
+
+function defenderLost(){
+    //Adding to the graveyard
+    var n = $('<h3 id="deceasedName">');
+    n.html(defender.name);
+    n.appendTo("#theFallen");
+    var img = $('<img id="deceased">');
+    img.attr("src", defender.source);
+    img.appendTo("#theFallen");
+    img.css("border-color", defender.color);
+    
+    //Clearing the defender img and border
+    //Resetting def variable and defender object
+    def = "";
+    defender = {};
+    $("#DEFImage").removeAttr("src");
+    $("#DEFImage").css("border-color", "");
+    $("#DEFhealth").text("");
+}
+
+//Add background music
+//Add lightsaber noises when the attack button is pressed
+//Maybe add some fun facts of each character

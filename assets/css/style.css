@@ -1,3 +1,7 @@
+body{
+    color: white;
+}
+
 #PCimage, img{
     width: 150px;
     height: 150px;
@@ -15,6 +19,8 @@
 
 body{
     /*background-image: url("../images/Endor.jpg");*/
+    background-image: url("../images/DeathStar.jpg");
+    background-size: contain;
     background-color: #cccccc;
 }
 
@@ -24,9 +30,25 @@ body{
     background-color: #ffffff;
     border-style:solid;
     border-color: green;
-    border-width: 3px;   
+    border-width: 3px;  
+    color: black; 
 }
 
 #kenobi{
     margin-left: 50px;
 }
+
+.fallen{
+    float:right;
+    
+}
+
+#deceased{
+    border-style: solid;
+    border-width: 3px;
+    border-color: transparent;
+
+    margin-bottom: 15px;
+}
+
+/*Set the bottom img's to be hidden*/

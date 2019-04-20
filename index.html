@@ -52,28 +52,32 @@
 
     <!-- Fight area -->
     <div class="row fight">
-        <div class="col-md-2" id="playerCharacter">
-            <h3>Your Character</h3>
-            <img id="PCimage">
-            <h4 id="PChealth"></h4>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-2" id="playerCharacter">
+                    <h3>Your Character</h3>
+                    <img id="PCimage">
+                    <h4 id=PChealth></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Enemies available to Attack!<br>Fight Section</h3>
+                    <button id="fight">Attack</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2" id="defender" value="defender">
+                    <h3>Defender</h3>
+                    <img id="DEFImage">
+                    <h4 id="DEFhealth"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 fallen" id="theFallen">
+            <h2>The Fallen</h2>
         </div>
     </div>
-    <div class="row fight">
-        <div class="col-md-4">
-            <h3>Enemies available to attack<br>Fight Section</h3>
-            <button id="fight">Attack</button>
-        </div>
-    </div>
-
-    <div class="row fight">
-        <div class="col-md-2" id="defender" value="defender">
-            <h3>Defender</h3>
-            <img id="DEFImage">
-            <h4 id="DEFhealth"></h4>
-        </div>
-    </div>
-
-
 </body>
 
 <script src="assets/javascript/game.js"></script>
