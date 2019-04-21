@@ -21,6 +21,7 @@ body{
     /*background-image: url("../images/Endor.jpg");*/
     background-image: url("../images/DeathStar.jpg");
     background-size: contain;
+    background-size: 100% auto;
     background-color: #cccccc;
 }
 
@@ -40,7 +41,7 @@ body{
 
 .fallen{
     float:right;
-    
+    width: 250px;
 }
 
 #deceased{
@@ -49,6 +50,15 @@ body{
     border-color: transparent;
 
     margin-bottom: 15px;
+}
+
+#enemiesAttack{
+    width: 700px;
+}
+
+#won{
+    font-size: 75px;
+    font-weight: bold;
 }
 
 /*Set the bottom img's to be hidden*/

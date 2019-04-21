@@ -1,1 +1,7 @@
 # unit-4-game
+
+This game allows the user to pick from the four jedi and sith that are available and use them as their chosen character. The user may also go on and pick who they want their opponent to be. When after picking both their character and their opponent their images are removed from the selection and moved down into the fight area. When the user presses the fight button the two characters will fight one another to the death. Showing their current hp right below their images. When either the players character or the opponent's health reaches zero they are considered dead and are moved to the right side of the page marked the Fallen to represent they have fought and died. 
+
+This project helped with more understanding of jQuery and its uses in a web application. Using on click event listeners to find when the characters are selected and when the fight button is pressed. There's one bug that I haven't worked out yet and thats when theres no opponent and you press the attack button the players character's health is replaced by NaN.
+
+Things to still be added to the game are more character options. Only allowing Jedi to fight the Sith and vice versa. A reset button to allow the user to reset the game at any point back to its original settings. The choice to change the background so the user can decide what battleground they want to fight in. Star wars music to play in the background and light saber noises when the attack button is pressed. Have the image araas for the Your Character and Defender not appear until they are selected.

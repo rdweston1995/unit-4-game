@@ -7,12 +7,14 @@ var playerCharacter = {};
 
 var defender = {};
 
+var wins = 0;
+
 var kenobi = {
     name: "Obi-Wan Kenobi",
     color: "blue",
     hp: 120,
-    attack: 20,
-    counterAttack: 12,
+    attack: 10,
+    counterAttack: 6,
     source: "assets/images/ObiWan.jpg"
 };
 
@@ -20,8 +22,8 @@ var luke = {
     name: "Luke Skywalker",
     color: "blue",
     hp: 100,
-    attack: 15,
-    counterAttack: 9,
+    attack: 6,
+    counterAttack: 5,
     source: "assets/images/Luke.jpg"
 };
 
@@ -29,8 +31,8 @@ var sheev = {
     name: "Darth Sidious",
     color: "red",
     hp: 150,
-    attack: 22,
-    counterAttack: 14,
+    attack: 11,
+    counterAttack: 7,
     source: "assets/images/DarthSidious.jpg"
 };
 
@@ -38,8 +40,8 @@ var maul = {
     name: "Darth Maul",
     color: "red",
     hp: 180,
-    attack: 30,
-    counterAttack: 12,
+    attack: 9,
+    counterAttack: 5,
     source: "assets/images/DarthMaul.jpg"
 }
 
@@ -81,17 +83,32 @@ function fight(pc, def){
 
     //if statements to check if either the playerCharacter or the defenders hp has gone below 0
     if(defender.hp <= 0){
+        wins++;
+        
         defenderLost();
+        if(wins === 3){
+            win();
+        }
+    }
+
+    if(playerCharacter.hp <= 0){
+        lose();
     }
 }
 //function to lower the characters health
 
-//function for win conditions
+//function for winning
 function win(){
-    //When the defender's health hits zero run this function to add one to wins
-    //Allow the user to pick a new defender
+    //Alert the player that the game has been won
+    var $h2 = $("<h2>", {id:"won"});
+    $h2.text("Winner!");
+    $(".winner").append($h2);
+}
 
-    //Remove image and health of the previous defender
+function lose(){
+    var $h2 = $("<h2>", {id:"lose"});
+    $h2.text("Lose!");
+    $(".winner").append($h2);
 }
 
 function setPlayerCharacter(pc){
